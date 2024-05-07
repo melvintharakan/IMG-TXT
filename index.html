@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Image Text Translation</title>
+  <style>
+    body {
+      background-color: #222;
+      color: #fff;
+      font-family: 'Gotham', Arial, sans-serif;
+      padding: 20px;
+    }
+    @font-face {
+      font-family: 'Gotham';
+      src: url('fonts/gotham-thin-webfont.woff2') format('woff2');
+    }
+    @font-face {
+      font-family: 'GothamU';
+      src: url('fonts/gotham-ultra-webfont.woff2') format('woff2');
+    }
+    h1 {
+      margin-bottom: 20px;
+      align-items: center;
+    }
+    form {
+      margin-bottom: 20px;
+      align-items: center;
+    }
+    input[type="file"] {
+      background-color: #333;
+      color: #fff;
+      border: none;
+      padding: 10px;
+      border-radius: 5px;
+      font-family: 'Gotham';
+    }
+    button[type="submit"] {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      padding: 10px 20px; /* Adjust padding for better appearance */
+      border-radius: 5px;
+      cursor: pointer;
+      font-family: 'Gotham';
+    }
+    button[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+    h2 {
+      margin-top: 20px;
+    }
+    p {
+      margin-bottom: 20px;
+      font-family: 'Gotham';
+    }
+  </style>
+</head>
+<body>
+  <h1>Image To Text Translation</h1>
+  <form method="POST" enctype="multipart/form-data">
+      <input type="file" name="image">
+      <button type="submit">Upload</button> <!-- Set button type to "submit" -->
+  </form>
+  {% if img_data %}
+  <h2>Uploaded Image:</h2>
+  <img src="data:image;base64,{{ img_data }}" alt="Uploaded Image">
+  {% endif %}
+  {% if translated_text %}
+  <h2>Translated Text:</h2>
+  <p>{{ translated_text }}</p>
+  {% endif %}
+</body>
+</html>
